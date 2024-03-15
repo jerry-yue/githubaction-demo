@@ -2,7 +2,19 @@ name: Events Demo 1
 on:
   pull_request:
     types: [opened]
+    branches:
+      - main
+      - "dev-*"      # single * cover dev-xxx-xxx
+      - "name/**"    # double *(**) cover name/xxx/yyy/zzz. name is a customized string
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - "dev-*"      # single * cover dev-xxx-xxx
+      - "name/**"    # double *(**) cover name/xxx/yyy/zzz. name is a customized string
+    paths-ignore:    # 当下述文件被更新的时候，忽略 CI 动作
+      - ".github/workflows/*"
+      - "backup"
 jobs:
   deploy:
     runs-on: ubuntu-latest
