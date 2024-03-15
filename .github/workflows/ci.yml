@@ -1,4 +1,4 @@
-name: Events Demo 1
+name: Github Action CI (Demo)
 on:
   pull_request:
     types: [opened]
